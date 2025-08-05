@@ -47,6 +47,16 @@ window.addEventListener("load", async () => {
   //     console.log("Service Worker registered successfully.");
   //   }
   // }
-
+  const bannerInstall = document.querySelector("#banner-install");
+  bannerInstall.addEventListener("click", async () => {
+    if(deferredPrompt) {
+      deferredPrompt.prompt(); // Muestra el prompt de instalación
+      const response = await deferredPrompt.userChoice; // Espera la elección del usuario
+      if (response.outcome === 'accepted') {
+        console.log("User accepted the installation prompt");
+      }
+      deferredPrompt = null; // Resetea el evento para evitar múltiples usos
+    }
+  });
 
 });
