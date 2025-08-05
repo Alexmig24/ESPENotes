@@ -3,6 +3,7 @@ let MAIN;
 let MODAL_POST;
 let BTN_SHOW_POST;
 let BTN_CANCEL_POST;
+let deferredPrompt; // Variable para almacenar el evento de instalación diferida
 
 // Funciones
 const showPostModal = () => {
@@ -18,12 +19,44 @@ const closePostModal = () => {
   MODAL_POST.style.transform = "translateY(100vh)"; // Oculta el modal con animación
 };
 
+window.addEventListener('beforeinstallprompt', (e) => {
+  console.log("Evento por defecto anulado");
+  e.preventDefault(); // Previene que el navegador muestre el banner de instalación automáticamente
+  deferredPrompt = e; // Guarda el evento para usarlo más tarde
+
+});
+
 // Cuando se carga el DOM
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   MAIN = document.querySelector("#main");
   MODAL_POST = document.querySelector("#modal-post-section");
   BTN_SHOW_POST = document.querySelector("#btn-upload-post");
   BTN_SHOW_POST.addEventListener("click", showPostModal); // Asigna el evento al botón de mostrar post
   BTN_CANCEL_POST = document.querySelector("#btn-post-cancel");
   BTN_CANCEL_POST.addEventListener("click", closePostModal); // Asigna el evento al botón de cerrar post
+
+  if("serviceWorker" in navigator) {
+    const res = await navigator.serviceWorker.register("/sw.js");
+    if(res){
+      console.log("Service Worker registered successfully.");
+    }
+  }
+  // if(navigator.serviceWorker) {
+  //   const res = await navigator.serviceWorker.register("../sw.js");
+  //   if(res){
+  //     console.log("Service Worker registered successfully.");
+  //   }
+  // }
+  const bannerInstall = document.querySelector("#banner-install");
+  bannerInstall.addEventListener("click", async () => {
+    if(deferredPrompt) {
+      deferredPrompt.prompt(); // Muestra el prompt de instalación
+      const response = await deferredPrompt.userChoice; // Espera la elección del usuario
+      if (response.outcome === 'accepted') {
+        console.log("User accepted the installation prompt");
+      }
+      deferredPrompt = null; // Resetea el evento para evitar múltiples usos
+    }
+  });
+
 });
