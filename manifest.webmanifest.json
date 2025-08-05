@@ -2,36 +2,36 @@
   "lang": "es",
   "name": "ESPENotes SD",
   "short_name": "ESPENotes",
-  "description": "Aplicacion que permite tomar notas de manera sencilla",
+  "description": "Aplicacion que permite tomar notas de forma sencilla y rápida.",
   "background_color": "#1a4d80",
   "theme_color": "#1a4d80",
-  "orientation": "landscape",
-  "display": "fullscreen",
-  "start_url":".",
-  "scope": ".",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": "/espenotes/",
+  "scope": "/espenotes/",
   "icons": [
     {
-      "src": "src/img/icons/icono-144x144.png",
-      "sizes": "144x6144",
+      "src": "src/img/icons/icon-144x144.png",
+      "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "src/img/icons/icono-192x192.png",
+      "src": "src/img/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "src/img/icons/icono-256x256.png",
+      "src": "src/img/icons/icon-256x256.png",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "src/img/icons/icono-384x384.png",
+      "src": "src/img/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "src/img/icons/icono-512x512.png",
+      "src": "src/img/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

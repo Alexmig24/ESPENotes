@@ -50,7 +50,6 @@
 .svg--container {
   position: relative;
 }
-
 .svg--container div {
   height: 210px;
   background: var(--dark-primary) url("../img/espe.jpg");
@@ -59,18 +58,15 @@
   object-fit: cover;
   color: var(--white);
 }
-
 .svg--container svg {
   position: absolute;
   bottom: 0;
   background: transparent;
 }
-
 #main .page-index {
   background: var(--dark-primary);
   height: var(--height);
 }
-
 .page--initial {
   margin-top: 10px;
   display: flex;
@@ -82,7 +78,6 @@
   line-height: 18px;
   font-weight: 400;
 }
-
 .page--initial i {
   font-size: 4rem;
   color: var(--white);
@@ -90,7 +85,6 @@
   padding: 10px;
   text-align: center;
 }
-
 .page--initial .description {
   color: var(--white);
   border-radius: 7px;
@@ -104,24 +98,9 @@
   background-color: var(--secondary);
   color: var(--white);
   display: flex;
-  flex-direction: row;;
+  flex-direction: row;
 }
 
 .app--install:hover {
   background-color: var(--dark-primary);
 }
-
-.app--install div:first-child {
-  font-size: 12px;
-  padding: 5px 0 8px 5px;
-  text-align: left;
-}
-
-.app--install div:last-child {
-  border-radius: 4px;
-  border-color: 1px solid var(--light-primary);
-  font-size: 14px;
-  padding: 5px 0 8px 5px;
-  float: right;
-}
-
