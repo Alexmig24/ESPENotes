@@ -32,12 +32,17 @@ window.addEventListener("load", async () => {
   BTN_SHOW_POST.addEventListener("click", showPostModal); // Asigna el evento al botón de mostrar post
   BTN_CANCEL_POST = document.querySelector("#btn-post-cancel");
   BTN_CANCEL_POST.addEventListener("click", closePostModal); // Asigna el evento al botón de cerrar post
-  if ("serviceWorker" in navigator) {
-    const res = await navigator.serviceWorker.register("/sw.js");
-    if (res) {
-      console.log("Service Worker registered successfully");
-    }
-  }
+  if (navigator.serviceWorker) {
+    const basePath = location.hostname === "localhost" ? "" : "/ESPENotes";
+    try {
+      const res = await navigator.serviceWorker.register(`${basePath}/sw.js`);
+      if (res) {
+        console.log("Service Worker registered successfully.");
+      }
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
+    }
+  }
   const bannerInstall = document.querySelector("#banner-install");
   bannerInstall.addEventListener("click", async () => {
     if (deferredPrompt) {
